@@ -69,6 +69,17 @@ function install_mailcatcher() {
     fi
 }
 
+function setup_supervisor() {
+    echo "Setting up supervisor to run mailcatcher"
+    if supervisorctl -h
+    then
+        echo "Supervisor installed"
+    else
+        echo "Supervisor doesn't seem to be installed, aborting"
+        exit 5
+    fi
+}
+
 # check that ruby is installed
 is_ruby_installed
 if [ "$IS_RUBY_INSTALLED" -eq 0 ]
